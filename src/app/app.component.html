@@ -1,8 +1,16 @@
-<button (click)="condition = !condition">toggle condition</button>
+<button mat-raised-button color="primary" (click)="onClick()">Toggle</button>
 
-<button mat-button (click)="onClick">Action</button>
 @if (condition) {
 <h1>{{title}}</h1>
 } @else {
 <h2>hahaha</h2>
 }
+
+<button mat-raised-button (click)="addItem()">Add Item</button>
+<ul>
+  @for (item of $list(); track item.id) {
+  <li>{{item.name}}</li>
+  }@empty {
+  <span>No items</span>
+  }
+</ul>
