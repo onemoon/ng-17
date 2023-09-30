@@ -69,7 +69,8 @@
               "browserTarget": "ng-17:build:production"
             },
             "development": {
-              "browserTarget": "ng-17:build:development"
+              "browserTarget": "ng-17:build:development",
+              "open": true
             }
           },
           "defaultConfiguration": "development"

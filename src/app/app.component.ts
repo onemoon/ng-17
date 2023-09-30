@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import {
+  MatButtonToggleChange,
+  MatButtonToggleModule,
+} from '@angular/material/button-toggle';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatButtonModule],
+  imports: [CommonModule, RouterOutlet, MatButtonModule, MatButtonToggleModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -25,6 +29,8 @@ export class AppComponent {
     },
   ]);
 
+  $color = signal<string>('blue');
+
   onClick() {
     this.condition = !this.condition;
   }
@@ -34,5 +40,9 @@ export class AppComponent {
       list.push({ id: list.length, name: Math.random().toString() });
       return list;
     });
+  }
+
+  btnToggleChange(event: MatButtonToggleChange) {
+    this.$color.set(event.value);
   }
 }

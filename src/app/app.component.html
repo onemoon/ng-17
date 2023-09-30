@@ -14,3 +14,22 @@
   <span>No items</span>
   }
 </ul>
+
+<mat-button-toggle-group name="color" value="blue" aria-label="Color" (change)="btnToggleChange($event)">
+  <mat-button-toggle value="red">Red color</mat-button-toggle>
+  <mat-button-toggle value="green">Green color</mat-button-toggle>
+  <mat-button-toggle value="blue">Default</mat-button-toggle>
+</mat-button-toggle-group>
+@switch ($color()) {
+@case ('red') {
+<!-- content here -->
+<p class="text-red-500">color is {{$color()}}</p>
+}
+@case ('green') {
+<p class="text-green-500">color is {{$color()}}</p>
+}
+@default {
+<p class="text-blue-500">color is {{$color()}}</p>
+
+}
+}
