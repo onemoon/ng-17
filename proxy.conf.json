@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://ef1459ab-2c52-4880-9f88-fc5f786b4999.mock.pstmn.io",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

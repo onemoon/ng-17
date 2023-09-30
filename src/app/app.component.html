@@ -33,3 +33,19 @@
 
 }
 }
+
+<button mat-raised-button color="accent" (click)="getUserInfo()">Get User Info</button>
+<!-- <mat-spinner></mat-spinner> -->
+@defer (when isLoading) {
+<!-- main content -->
+<p>User name is <span class="text-purple-500 font-bold text-base">{{$userInfo()?.name}}</span></p>
+} @placeholder {
+<!-- placeholder content  -->
+<p>Should display user name</p>
+} @loading {
+<!-- loading -->
+<mat-spinner></mat-spinner>
+} @error {
+<!-- error -->
+<p>loading error</p>
+}
