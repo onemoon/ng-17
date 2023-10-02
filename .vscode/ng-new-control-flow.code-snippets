@@ -1,0 +1,160 @@
+{
+  "Angular Standalone Single File Component": {
+    "prefix": "asfc",
+    "scope": "typescript",
+    "description": "Angular Standalone Single File Component",
+    "body": [
+      "import { Component, ChangeDetectionStrategy } from '@angular/core';",
+      "",
+      "@Component({",
+      "\tselector: 'app-${1:selector-name}',",
+      "\ttemplate: `",
+      "\t\t$0",
+      "\t`,",
+      "\tstandalone: true,",
+      "\tchangeDetection: ChangeDetectionStrategy.OnPush",
+      "})",
+      "export class ${2:Name}Component { }"
+    ]
+  },
+  "signal-standalone-sfc": {
+    "prefix": "sfc",
+    "scope": "typescript",
+    "description": "Angular Standalone Signal Single File Component",
+    "body": [
+      "import { Component } from '@angular/core';",
+      "",
+      "@Component({",
+      "\tselector: 'app-${1:selector-name}',",
+      "\ttemplate: `",
+      "\t\t$0",
+      "\t`,",
+      "\tsignals: true,",
+      "\tstandalone: true,",
+      "\timports: [],",
+      "})",
+      "export class ${2:Name}Component { }"
+    ]
+  },
+
+  "sinp": {
+    "prefix": "sinp",
+    "body": [
+      "readonly ${1:name} = signal<${2:type} | null>(null)",
+      "@Input({ alias: '${1:name}' }) set _${1:name}(value: ${2:type}) {",
+      "\tthis.${1:name}.set(value)",
+      "}\n"
+    ],
+    "description": "Angular Setter Signal Inputs"
+  },
+
+  "ng-if-block": {
+    "prefix": "@if",
+    "body": ["@if (${1:condition}) {", "\t${2: <!-- content here -->}", "}"],
+    "description": "if block"
+  },
+  "ng-if-else-block": {
+    "prefix": "@if-else",
+    "body": [
+      "@if (${1:condition}) {",
+      "\t${2: <!-- content here -->}",
+      "} @else {",
+      "\t${3: <!-- else content here -->}",
+      "}"
+    ],
+    "description": "if else block"
+  },
+  "ng-else-block": {
+    "prefix": "@else",
+    "body": ["@else {", "\t${1: <!-- else content here -->}", "}"],
+    "description": "else block"
+  },
+  "ng-if-else-if-block": {
+    "prefix": "@if-else-if",
+    "body": [
+      "@if (${1:condition}) {",
+      "\t${2: <!-- content here -->}",
+      "} @else if (${3:otherCondition}) {",
+      "\t${4: <!-- else if content here -->}",
+      "} @else {",
+      "\t${5: <!-- else content here -->}",
+      "}"
+    ],
+    "description": "if else if block"
+  },
+  "ng-else-if-block": {
+    "prefix": "@else-if",
+    "body": [
+      "@else if (${1: otherCondition}) {",
+      "\t${2: <!-- else if content here -->}",
+      "}"
+    ],
+    "description": "else if block"
+  },
+  "ng-for-block": {
+    "prefix": "@for",
+    "body": [
+      "@for (${2:item} of ${1:items}; track ${2:item}) {",
+      "\t${3: <!-- content here -->}",
+      "}"
+    ],
+    "description": "for block"
+  },
+  "ng-for-empty-block": {
+    "prefix": "@for-empty",
+    "body": [
+      "@for (${2:item} of ${1:items}; track ${2:item}) {",
+      "\t${3: <!-- content here -->}",
+      "} @empty {",
+      "\t${4: <!-- empty list -->}",
+      "}"
+    ],
+    "description": "each else block"
+  },
+  "ng-defer-on-block": {
+    "prefix": "@defer (on xxx)",
+    "body": [
+      "@defer (on interaction) {",
+      "\t<!-- main content -->",
+      "} @placeholder {",
+      "\t<!-- placeholder content  -->",
+      "} @loading {",
+      "\t<!-- loading -->",
+      "} @error {",
+      "\t<!-- error -->",
+      "}"
+    ],
+    "description": "defer on block"
+  },
+  "ng-defer-when-block": {
+    "prefix": "@defer (when xxx)",
+    "body": [
+      "@defer (when isLoaded) {",
+      "\t<!-- main content -->",
+      "} @placeholder {",
+      "\t<!-- placeholder content  -->",
+      "} @loading {",
+      "\t<!-- loading -->",
+      "} @error {",
+      "\t<!-- error -->",
+      "}"
+    ],
+    "description": "defer when block"
+  },
+  "ng-switch-block": {
+    "prefix": "@switch",
+    "body": [
+      "@switch (${1:expression}) {",
+      "\t@case (${2:expression}) {",
+      "\t\t${3: <!-- content here -->}",
+      "\t}"
+      "\t@case (${4:expression}) {",
+      "\t\t${5: <!-- content here -->}",
+      "\t}"
+      "\t@default {",
+      "\t\t${6: <!-- default content here -->}",
+      "\t}",
+      "}"
+    ],
+  }
+}
