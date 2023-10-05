@@ -1,7 +1,7 @@
 <button mat-raised-button color="primary" (click)="onClick()">Toggle</button>
 
 @if (condition) {
-<h1>{{title}}</h1>
+<h1>{{ title }}</h1>
 } @else {
 <h2>hahaha</h2>
 }
@@ -9,36 +9,44 @@
 <button mat-raised-button (click)="addItem()">Add Item</button>
 <ul>
   @for (item of $list(); track item.id) {
-  <li>{{item.name}}</li>
+  <li>{{ item.name }}</li>
   }@empty {
   <span>No items</span>
   }
 </ul>
 
-<mat-button-toggle-group name="color" value="blue" aria-label="Color" (change)="btnToggleChange($event)">
+<mat-button-toggle-group
+  name="color"
+  value="blue"
+  aria-label="Color"
+  (change)="btnToggleChange($event)"
+>
   <mat-button-toggle value="red">Red color</mat-button-toggle>
   <mat-button-toggle value="green">Green color</mat-button-toggle>
   <mat-button-toggle value="blue">Default</mat-button-toggle>
 </mat-button-toggle-group>
-@switch ($color()) {
-@case ('red') {
+@switch ($color()) { @case ('red') {
 <!-- content here -->
-<p class="text-red-500">color is {{$color()}}</p>
-}
-@case ('green') {
-<p class="text-green-500">color is {{$color()}}</p>
-}
-@default {
-<p class="text-blue-500">color is {{$color()}}</p>
+<p class="text-red-500">color is {{ $color() }}</p>
+} @case ('green') {
+<p class="text-green-500">color is {{ $color() }}</p>
+} @default {
+<p class="text-blue-500">color is {{ $color() }}</p>
 
-}
-}
+} }
 
-<button mat-raised-button color="accent" (click)="getUserInfo()">Get User Info</button>
+<button mat-raised-button color="accent" (click)="getUserInfo()">
+  Get User Info
+</button>
 <!-- <mat-spinner></mat-spinner> -->
-@defer (when isLoading) {
+@defer (when $isLoaded()) {
 <!-- main content -->
-<p>User name is <span class="text-purple-500 font-bold text-base">{{$userInfo()?.name}}</span></p>
+<p>
+  User name is
+  <span class="text-purple-500 font-bold text-base">{{
+    $userInfo()?.name
+  }}</span>
+</p>
 } @placeholder {
 <!-- placeholder content  -->
 <p>Should display user name</p>

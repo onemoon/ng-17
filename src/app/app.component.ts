@@ -54,6 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isLoading = false;
 
   $userInfo = signal<{ name: string } | undefined>(undefined);
+  $isLoaded = signal(false);
 
   onDestroy$: Subject<void> = new Subject();
 
@@ -88,6 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
+    this.$isLoaded.set(false);
     this.apiService
       .getUserInfo()
       .pipe(takeUntil(this.onDestroy$))
@@ -95,9 +97,11 @@ export class AppComponent implements OnInit, OnDestroy {
         next: (data) => {
           this.$userInfo.set(data);
           this.isLoading = false;
+          this.$isLoaded.set(true);
         },
         error: () => {
           this.isLoading = false;
+          this.$isLoaded.set(true);
         },
       });
   }
